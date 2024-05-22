@@ -21,16 +21,18 @@ class Calculator(Scene):
         calc_out_line = Line([-CALCULATOR_WIDTH/2, (CALCULATOR_HEIGHT*0.25), 0],
                              [CALCULATOR_WIDTH/2, (CALCULATOR_HEIGHT*0.25), 0])
         calc_out_line.set_color(ORANGE)
+        self.play(Create(calc_rect))
+        self.play(Create(calc_out_line))
         # calculator buttons
-        for i in range(1, 3):
-            for j in range(1, 3):
+        for i in range(2, 5):
+            for j in range(2, 5):
                 r = RoundedRectangle(width=1, height=1, corner_radius=0.1)
                 r.move_to([
-                    calc_out_line.points[0][0],  # line start x
-                    calc_out_line.points[0][1],  # line start y
+                    # FIXME: for some reason i am unable to put `r.points` into a variable
+                    calc_out_line.points[0][0] -
+                    calc_out_line.points[0][0] * 0.2,  # x
+                    calc_out_line.points[0][1] - \
+                    calc_out_line.points[0][1] * 0.2,  # y
                     0
                 ])
                 self.play(Create(r))
-
-        self.play(Create(calc_rect))
-        self.play(Create(calc_out_line))
