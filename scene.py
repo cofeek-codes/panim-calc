@@ -24,15 +24,24 @@ class Calculator(Scene):
         self.play(Create(calc_rect))
         self.play(Create(calc_out_line))
         # calculator buttons
-        for i in range(2, 5):
-            for j in range(2, 5):
+        horizontal_margin = 0.3
+        for i in range(1, 3):
+            for j in range(1, 3):
+                if i == 1 and j == 1:
+                    horizontal_margin = 0
+                    vertical_margin = 0
+                else:
+                    horizontal_margin = 0.3
+                    vertical_margin = 0.3
+                print(f'vertical_margin = {vertical_margin} ')
+                print(f'horizontal_margin = {horizontal_margin} ')
+
                 r = RoundedRectangle(width=1, height=1, corner_radius=0.1)
                 r.move_to([
                     # FIXME: for some reason i am unable to put `r.points` into a variable
-                    calc_out_line.points[0][0] -
-                    calc_out_line.points[0][0] * 0.2,  # x
-                    calc_out_line.points[0][1] - \
-                    calc_out_line.points[0][1] * 0.2,  # y
+                    calc_out_line.points[0][0] + 1 * \
+                    i + horizontal_margin,    # x
+                    calc_out_line.points[0][1],  # y
                     0
                 ])
                 self.play(Create(r))
