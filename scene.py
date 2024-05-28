@@ -41,7 +41,7 @@ class Calculator(Scene):
                     # FIXME: for some reason i am unable to put `r.points` into a variable
                     calc_out_line.points[0][0] + 1 * \
                     i + horizontal_margin,    # x
-                    calc_out_line.points[0][1],  # y
+                    calc_out_line.points[0][1] + 1,  # y
                     0
                 ])
                 self.play(Create(r))
