@@ -24,9 +24,9 @@ class Calculator(Scene):
         self.play(Create(calc_rect))
         self.play(Create(calc_out_line))
         # calculator buttons
-        horizontal_margin = 0.3
-        for i in range(1, 4):  # x coordinate loop
-            for j in range(1, 4):  # y coordinate loop
+        r_amount = 9
+        for j in range(1, 4):  # x coordinate loop
+            for i in range(1, 4):  # y coordinate loop
                 if i == 1 and j == 1:
                     horizontal_margin = 0
                     vertical_margin = 0
@@ -43,4 +43,13 @@ class Calculator(Scene):
                     calc_out_line.points[0][1] - 1 * j,  # y
                     0
                 ])
+                # technical buttons
                 self.play(Create(r))
+                num = Text(str(r_amount))
+                num.move_to([
+                    r.points[0][0],
+                    r.points[1][1],
+                    r.points[2][2],
+                ])
+                self.play(Write(num))
+                r_amount -= 1
