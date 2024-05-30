@@ -25,8 +25,8 @@ class Calculator(Scene):
         self.play(Create(calc_out_line))
         # calculator buttons
         horizontal_margin = 0.3
-        for i in range(1, 3):
-            for j in range(1, 3):
+        for i in range(1, 4):  # x coordinate loop
+            for j in range(1, 4):  # y coordinate loop
                 if i == 1 and j == 1:
                     horizontal_margin = 0
                     vertical_margin = 0
@@ -39,9 +39,8 @@ class Calculator(Scene):
                 r = RoundedRectangle(width=1, height=1, corner_radius=0.1)
                 r.move_to([
                     # FIXME: for some reason i am unable to put `r.points` into a variable
-                    calc_out_line.points[0][0] + 1 * \
-                    i + horizontal_margin,    # x
-                    calc_out_line.points[0][1] + 1,  # y
+                    calc_out_line.points[0][0] + 1 * i,
+                    calc_out_line.points[0][1] - 1 * j,  # y
                     0
                 ])
                 self.play(Create(r))
